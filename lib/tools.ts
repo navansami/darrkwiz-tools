@@ -1,0 +1,73 @@
+export const tools = [
+  {
+    slug: 'screenshot-studio',
+    name: 'Screenshot studio',
+    short: 'Frame it. Flaunt it.',
+    description:
+      'Give your screenshots a little main-character energy. Beautiful backgrounds, clean frames, instant exports.',
+    category: 'Images',
+    number: '01',
+    icon: 'frame',
+    tag: 'MAKE IT SHINE',
+    color: '#ff5b2d',
+  },
+  {
+    slug: 'image-compressor',
+    name: 'Image compressor',
+    short: 'Less weight. Same wow.',
+    description:
+      'Resize and compress a whole batch of images. Keep the good stuff. Lose the extra bytes.',
+    category: 'Images',
+    number: '02',
+    icon: 'compress',
+    tag: 'SMALLER IS BETTER',
+    color: '#b7c8a3',
+  },
+  {
+    slug: 'image-converter',
+    name: 'Image converter',
+    short: 'A change of format.',
+    description: 'PNG, JPEG, or WebP? Give your images a new outfit, right here in your browser.',
+    category: 'Images',
+    number: '03',
+    icon: 'convert',
+    tag: 'SWITCH THINGS UP',
+    color: '#d2c2ea',
+  },
+  {
+    slug: 'text-cleaner',
+    name: 'Text cleaner',
+    short: 'A fresh start for your text.',
+    description:
+      'Untangle copied text. Fix weird spacing, broken lines, and duplicates in a few clicks.',
+    category: 'Text',
+    number: '04',
+    icon: 'text',
+    tag: 'TIDY UP',
+    color: '#e5c478',
+  },
+  {
+    slug: 'text-compare',
+    name: 'Text compare',
+    short: 'Spot the little changes.',
+    description: 'Two versions. One clear picture. See exactly what was added, removed, or kept.',
+    category: 'Text',
+    number: '05',
+    icon: 'compare',
+    tag: 'FIND THE DIFFERENCE',
+    color: '#a7c6cf',
+  },
+  {
+    slug: 'palette-extractor',
+    name: 'Palette extractor',
+    short: 'Good colours are everywhere.',
+    description:
+      'Find the colours hiding in your favourite image. Copy a shade or take the whole palette.',
+    category: 'Design',
+    number: '06',
+    icon: 'palette',
+    tag: 'BORROW FROM THE WORLD',
+    color: '#d6a0a0',
+  },
+] as const;
+export type Tool = (typeof tools)[number];
