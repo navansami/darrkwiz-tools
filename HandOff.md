@@ -9,13 +9,13 @@ Keep the existing editorial identity: dark surfaces, warm paper text, orange acc
 ## Current implementation
 
 - Tools: six working browser utilities with permanent `/tools/[slug]` URLs: screenshot studio, image compressor, image converter, text cleaner, text compare, and palette extractor.
-- Header navigation now presents Tools, Learn, and Playground, linked to homepage sections.
+- Header navigation presents Tools (homepage section), Learn (`/learn`), and Playground (`/playground`).
 - The homepage headline, introduction, about copy, and footer establish the three pillars.
-- Learn and Playground are explicitly marked as planned; their homepage sections describe the direction, not completed experiences.
-- Site title, description, Open Graph metadata, and homepage canonical reflect the positioning. No unfinished routes have been added to the sitemap.
+- First release implemented: `/learn/colour-theory`, `/learn/image-compression`, and `/playground/css-easing`, with interactive controls, explanations, challenges, reset, and exports.
+- Dedicated pages have unique titles, descriptions, social metadata, canonical URLs, visible Navan Sami attribution, and author structured data. All five new routes are in the sitemap.
 - Existing files and text are processed in the browser, without accounts or server storage.
 
-The items below are the agreed idea backlog, not a claim that all features have been implemented.
+The items below preserve the full agreed idea backlog. The three first-release experiences above are implemented; other topics remain future work.
 
 ## Information architecture
 
@@ -25,7 +25,7 @@ The items below are the agreed idea backlog, not a claim that all features have 
 | Learn | Understand concepts through explanations and interactive examples | `/learn`, `/learn/[slug]` |
 | Playground | Experiment freely with design and code | `/playground`, `/playground/[slug]` |
 
-Keep existing tool URLs stable. Add dedicated pillar index pages when there is substantial content to explore; replace the homepage anchor navigation then. Put challenges inside their related lessons or playgrounds initially.
+Keep existing tool URLs stable. Learn and Playground now have dedicated index pages. Tools retains its existing homepage section. Put challenges inside their related lessons or playgrounds initially.
 
 ## Full idea backlog
 
@@ -88,7 +88,7 @@ Inspiration:
 - [Nicky Case’s interactive explanations](https://ncase.me/neurons/): prose combined with experiments.
 - [Nutshell](https://ncase.me/nutshell/): expandable explanations that keep deeper context on the page.
 
-## Recommended first release
+## First release (implemented)
 
 1. **Colour theory lab:** begin with colour relationships and a draggable wheel. Place the guided explanation in Learn and cross-link the palette extractor.
 2. **Image compression explainer:** make quality, artifacts, and file size visible. Link directly to the existing compressor.
@@ -99,7 +99,7 @@ Build these as complete experiences before expanding across all topics. Then add
 ## SEO and discoverability
 
 - Brand positioning: **Darrkwiz — Tools, Learn & Playground**.
-- Describe the site naturally as practical browser tools, interactive learning, and creative experimentation. Keep availability accurate: learning and playground experiences are currently planned.
+- Describe the site naturally as practical browser tools, interactive learning, and creative experimentation. Keep availability accurate: the first three experiences are implemented; future topics remain planned.
 - Give every launched pillar and detail page a descriptive title, unique description, self-referencing canonical URL, and matching social metadata.
 - Target the actual topic on detail pages, such as colour theory, image compression, and CSS easing. Write for the reader’s task rather than repeating the brand phrase everywhere.
 - Keep substantive lesson text and useful headings available in rendered HTML; interactive controls supplement the explanation.
@@ -119,4 +119,4 @@ Build these as complete experiences before expanding across all topics. Then add
 
 ## Next implementation handoff
 
-The positioning and roadmap are in place. The next substantive work is the first release above, followed by dedicated Learn and Playground index pages once their experiences are ready. This handoff does not authorize automatic implementation of the entire backlog or a change of hosting provider.
+The first three experiences and dedicated Learn and Playground indexes are implemented. Next candidates are typography, gradients, patterns, and additional web fundamentals. Compression comparisons use a fresh PNG baseline of prepared pixels, rather than claiming savings against the upload. The site attributes these experiences to Navan Sami in visible copy and SEO metadata. Search ranking is not guaranteed. This handoff does not authorize automatic implementation of the entire backlog or a change of hosting provider.

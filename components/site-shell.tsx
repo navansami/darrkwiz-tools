@@ -44,10 +44,10 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           <Link href="/#tools" onClick={() => setMenu(false)}>
             <span className="nav-dot" /> Tools <span className="nav-count">06</span>
           </Link>
-          <Link href="/#learn" onClick={() => setMenu(false)}>
+          <Link href="/learn" onClick={() => setMenu(false)}>
             Learn
           </Link>
-          <Link href="/#playground" onClick={() => setMenu(false)}>
+          <Link href="/playground" onClick={() => setMenu(false)}>
             Playground
           </Link>
         </nav>
@@ -82,7 +82,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
           </Link>
           <p>
             Tools. Learn. Playground.
-            <br />Make something. Understand more. Stay curious.
+            <br />
+            Make something. Understand more. Stay curious.
           </p>
           <a href="https://navansami.com" target="_blank" rel="noreferrer">
             A side of Navan Sami <ArrowUpRight size={17} />

@@ -175,11 +175,14 @@ export function Home() {
           <h1>
             <span>TOOLS.</span>
             <span>LEARN.</span>
-            <span><em>Playground.</em></span>
+            <span>
+              <em>Playground.</em>
+            </span>
           </h1>
           <p>
             Make something. Understand how it works. Try something new.
-            <br className="desktop-break" /> Free tools today. Interactive learning and creative experiments next.
+            <br className="desktop-break" /> Free browser tools. Interactive lessons. Creative
+            experiments.
           </p>
           <div className="hero-cta">
             <a href="#tools" className="button primary">
@@ -383,33 +386,56 @@ export function Home() {
           <Sparkles size={18} />
         </div>
       </section>
-      <section className="explore-section wrap" aria-label="Learn and Playground roadmap">
+      <section className="explore-section wrap" aria-label="Explore Learn and Playground">
         <div className="explore-intro">
           <span className="eyebrow">MORE WAYS TO STAY CURIOUS</span>
-          <h2>Make. Understand. <em>Experiment.</em></h2>
-          <p>The tools are ready to use. Here’s where Darrkwiz is heading next.</p>
+          <h2>
+            Make. Understand. <em>Experiment.</em>
+          </h2>
+          <p>Pick a tool, explore an idea, or make an experiment your own.</p>
         </div>
         <div className="explore-grid">
           <article id="learn" className="explore-card">
-            <span className="eyebrow">02 / LEARN · PLANNED</span>
+            <span className="eyebrow">02 / LEARN</span>
             <h3>The theory, made tangible.</h3>
-            <p>Explore colour, typography, image compression, and how the web works through short explanations and hands-on experiments.</p>
+            <p>
+              Explore colour relationships and image compression through short explanations and
+              hands-on experiments.
+            </p>
             <ul>
-              <li>Colour theory with a draggable colour wheel</li>
-              <li>Image compression you can inspect and compare</li>
-              <li>Visual guides to browsers, HTTP, and JavaScript</li>
+              <li>
+                <Link href="/learn/colour-theory">Colour theory lab ↗</Link>
+              </li>
+              <li>
+                <Link href="/learn/image-compression">Image compression explainer ↗</Link>
+              </li>
             </ul>
-            <p className="explore-note">Explain it. Try it. Take a small challenge. Put it to use.</p>
+            <Link className="text-link" href="/learn">
+              Explore Learn <ArrowUpRight size={16} />
+            </Link>
+            <p className="explore-note">
+              Explain it. Try it. Take a small challenge. Put it to use.
+            </p>
           </article>
           <article id="playground" className="explore-card">
-            <span className="eyebrow">03 / PLAYGROUND · PLANNED</span>
+            <span className="eyebrow">03 / PLAYGROUND</span>
             <h3>Follow your curiosity.</h3>
-            <p>A space to play with design and code, see what changes, and take something useful away.</p>
+            <p>
+              A space to play with design and code, see what changes, and take something useful
+              away.
+            </p>
             <ul>
-              <li>CSS easing curves with live motion previews</li>
-              <li>Gradient, pattern, and layout experiments</li>
-              <li>Creative challenges and copyable CSS</li>
+              <li>
+                <Link href="/playground/css-easing">
+                  CSS easing curves with live motion previews ↗
+                </Link>
+              </li>
+              <li>Editable Bézier handles and copyable CSS</li>
+              <li>A time slider to inspect motion at your own pace</li>
             </ul>
+            <Link className="text-link" href="/playground">
+              Explore Playground <ArrowUpRight size={16} />
+            </Link>
             <p className="explore-note">Change a setting. See what happens. Make it your own.</p>
           </article>
         </div>

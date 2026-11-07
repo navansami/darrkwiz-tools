@@ -23,10 +23,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://darrkwiz.com'),
   title: { default: 'Darrkwiz — Tools, Learn & Playground', template: '%s · Darrkwiz' },
   description:
-    'Tools, Learn, Playground: a home for making, understanding, and experimenting. Try six free browser tools, with interactive theory and creative playgrounds coming next.',
+    'Tools, Learn, Playground: a home for making, understanding, and experimenting. Explore free browser tools, interactive colour theory and image compression lessons, and a CSS easing playground by Navan Sami.',
+  authors: [{ name: 'Navan Sami', url: 'https://navansami.com' }],
+  creator: 'Navan Sami',
   openGraph: {
     title: 'Darrkwiz — Tools, Learn & Playground',
-    description: 'Make with free browser tools. Explore the roadmap for interactive lessons and creative playgrounds.',
+    description:
+      'Free browser tools, interactive lessons, and creative playgrounds. Created by Navan Sami.',
     type: 'website',
     url: 'https://darrkwiz.com',
     siteName: 'Darrkwiz',

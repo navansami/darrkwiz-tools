@@ -1,6 +1,6 @@
 # Darrkwiz
 
-A Next.js App Router site organized around **Tools · Learn · Playground**, styled from `STYLE_GUIDE.md`. Six browser tools are available today: screenshot studio, batch image compressor, batch image converter, text cleaner, text comparison, and palette extractor. Interactive learning and creative playgrounds are planned.
+A Next.js App Router site organized around **Tools · Learn · Playground**, styled from `STYLE_GUIDE.md`. Six browser tools are available today: screenshot studio, batch image compressor, batch image converter, text cleaner, text comparison, and palette extractor. Learn includes a colour theory lab and an image compression explainer. Playground includes an interactive CSS easing editor. Created by Navan Sami.
 
 See [HandOff.md](HandOff.md) for the complete feature roadmap, content architecture, first-release priorities, and SEO direction.
 
@@ -43,3 +43,11 @@ Browser tests use system Google Chrome if available; otherwise install Playwrigh
 Files and text are processed entirely in the browser. Nothing is uploaded. Image inputs: PNG, JPEG, WebP, AVIF (browser decoding support required), maximum 25 MB and 40 megapixels each. Browser memory limits still apply; use smaller batches for large originals.
 
 Fonts are self-hosted; their OFL licenses are in `public/fonts/`. Motion is enabled by default unless reduced motion is preferred. The header toggle persists the visitor's choice locally. Core tools work with motion paused.
+
+## Interactive experiences
+
+- `/learn/colour-theory`: draggable HSL wheel, three colour relationships, adjustable saturation and lightness, CSS palette export, and a short challenge.
+- `/learn/image-compression`: local image upload or textured sample, real JPEG/WebP/PNG encodings, PNG baseline comparison, zoom, file sizes, and result download. Prepared previews are limited to 1200 pixels per side.
+- `/playground/css-easing`: draggable cubic Bézier handles, presets, duration controls, explicit motion comparison, time scrubbing, and CSS export.
+
+Each experience has its own canonical URL, search and social metadata, visible Navan Sami attribution, and author structured data. `/learn` and `/playground` provide linked indexes.
