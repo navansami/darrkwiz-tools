@@ -1,8 +1,15 @@
 'use client';
-import { useState, type PointerEvent } from 'react';
+import { useRef, useState, type PointerEvent } from 'react';
 import Link from 'next/link';
 import { CopyButton } from '@/components/tool-shared';
-const harmonies = { complementary: [0, 180], analogous: [0, 30, -30], triadic: [0, 120, 240] };
+const harmonies = {
+  complementary: [0, 180],
+  analogous: [0, 30, -30],
+  triadic: [0, 120, 240],
+  square: [0, 90, 180, 270],
+};
+type Harmony = keyof typeof harmonies | 'custom';
+const wrap = (h: number) => ((h % 360) + 360) % 360;
 const explanations = {
   complementary:
     'Opposite hues, 180° apart. Try using one as a main colour and the other as an accent.',
@@ -10,6 +17,9 @@ const explanations = {
     'Neighbours, 30° to either side. They share a similar hue family and can create a quieter palette.',
   triadic:
     'Three hues spaced 120° apart. Start with one dominant colour and use the others more sparingly.',
+  square: 'Four hues spaced 90° apart. Try one dominant colour, with the other three as accents.',
+  custom:
+    'Move each picker independently to explore your own relationships. Base hue rotates the whole palette.',
 };
 function hex(h: number, s: number, l: number) {
   const a = (s / 100) * Math.min(l / 100, 1 - l / 100);
@@ -30,20 +40,37 @@ export default function ColourLab() {
   const [hue, setHue] = useState(18),
     [saturation, setSaturation] = useState(75),
     [lightness, setLightness] = useState(55);
-  const [harmony, setHarmony] = useState<keyof typeof harmonies>('complementary');
+  const [harmony, setHarmony] = useState<Harmony>('complementary');
   const [answer, setAnswer] = useState<number | null>(null);
-  const hues = harmonies[harmony].map((o) => (hue + o + 360) % 360);
+  const [customOffsets, setCustomOffsets] = useState<number[]>([0, 180]);
+  const draggingPicker = useRef<number | null>(null);
+  const offsets = harmony === 'custom' ? customOffsets : harmonies[harmony];
+  const hues = offsets.map((o) => wrap(hue + o));
+  function editPicker(index: number, value: number) {
+    const next = hues.map((h, i) => (i === index ? wrap(value) : h));
+    setHue(next[0]);
+    setCustomOffsets(next.map((h) => wrap(h - next[0])));
+    setHarmony('custom');
+  }
+  function chooseHarmony(next: Harmony) {
+    if (next === 'custom') setCustomOffsets([...offsets]);
+    setHarmony(next);
+  }
   const colours = hues.map((h) => hex(h, saturation, lightness));
   function point(e: PointerEvent<HTMLDivElement>) {
     const r = e.currentTarget.getBoundingClientRect();
     const angle = Math.atan2(e.clientY - r.top - r.height / 2, e.clientX - r.left - r.width / 2);
-    setHue(Math.round(((angle * 180) / Math.PI + 90 + 360) % 360));
+    const value = wrap(Math.round((angle * 180) / Math.PI + 90));
+    if (draggingPicker.current === null) setHue(value);
+    else editPicker(draggingPicker.current, value);
   }
   function reset() {
     setHue(18);
     setSaturation(75);
     setLightness(55);
     setHarmony('complementary');
+    setCustomOffsets([0, 180]);
+    draggingPicker.current = null;
     setAnswer(null);
   }
   return (
@@ -72,21 +99,38 @@ export default function ColourLab() {
                 background: `conic-gradient(${Array.from({ length: 13 }, (_, i) => `hsl(${i * 30} ${saturation}% ${lightness}%)`).join(',')})`,
               }}
               onPointerDown={(e) => {
+                const marker = (e.target as HTMLElement).closest<HTMLElement>('[data-picker]');
+                draggingPicker.current = marker ? Number(marker.dataset.picker) : null;
                 e.currentTarget.setPointerCapture(e.pointerId);
                 point(e);
               }}
               onPointerMove={(e) => {
                 if (e.currentTarget.hasPointerCapture(e.pointerId)) point(e);
               }}
-              aria-hidden="true"
+              role="group"
+              aria-label="Colour wheel pickers"
             >
               <div className="wheel-centre">
                 <strong>{hue}°</strong>
                 <span>BASE HUE</span>
               </div>
               {hues.map((h, i) => (
-                <span
+                <button
                   key={i}
+                  type="button"
+                  data-picker={i}
+                  aria-label={`Colour ${i + 1} picker, ${h} degrees`}
+                  onKeyDown={(e) => {
+                    if (['ArrowLeft', 'ArrowDown', 'ArrowRight', 'ArrowUp'].includes(e.key)) {
+                      e.preventDefault();
+                      editPicker(
+                        i,
+                        h +
+                          (['ArrowLeft', 'ArrowDown'].includes(e.key) ? -1 : 1) *
+                            (e.shiftKey ? 10 : 1),
+                      );
+                    }
+                  }}
                   className="wheel-marker"
                   style={{
                     left: `${50 + 41 * Math.sin((h * Math.PI) / 180)}%`,
@@ -95,23 +139,41 @@ export default function ColourLab() {
                   }}
                 >
                   {i + 1}
-                </span>
+                </button>
               ))}
             </div>
-            <p className="lab-caption">Drag the wheel, or use the hue slider below.</p>
+            <p className="lab-caption">
+              Drag a numbered picker to edit its hue. Drag the wheel background to rotate all
+              colours. You can also use the sliders or arrow keys on a picker.
+            </p>
           </div>
           <div className="lab-controls">
             <label>
-              Colour relationship
+              Number of pickers
               <select
-                value={harmony}
-                onChange={(e) => setHarmony(e.target.value as keyof typeof harmonies)}
+                value={hues.length}
+                onChange={(e) =>
+                  chooseHarmony(
+                    ({ 2: 'complementary', 3: 'triadic', 4: 'square' } as const)[
+                      Number(e.target.value) as 2 | 3 | 4
+                    ],
+                  )
+                }
               >
+                <option value="2">2 pickers</option>
+                <option value="3">3 pickers</option>
+                <option value="4">4 pickers</option>
+              </select>
+            </label>
+            <label>
+              Colour relationship
+              <select value={harmony} onChange={(e) => chooseHarmony(e.target.value as Harmony)}>
                 {Object.keys(harmonies).map((k) => (
                   <option key={k} value={k}>
                     {k[0].toUpperCase() + k.slice(1)}
                   </option>
                 ))}
+                <option value="custom">Custom · independent pickers</option>
               </select>
             </label>
             <p>{explanations[harmony]}</p>
@@ -158,6 +220,17 @@ export default function ColourLab() {
               <small>
                 {hues[i]}° · {i === 0 ? 'Base' : 'Related'}
               </small>
+              <label className="picker-hue" htmlFor={`picker-hue-${i}`}>
+                Hue for colour {i + 1}
+                <input
+                  id={`picker-hue-${i}`}
+                  type="range"
+                  min="0"
+                  max="359"
+                  value={hues[i]}
+                  onChange={(e) => editPicker(i, +e.target.value)}
+                />
+              </label>
               <CopyButton text={c} label={`Copy colour ${i + 1}`} />
             </div>
           ))}

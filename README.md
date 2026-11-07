@@ -46,7 +46,7 @@ Fonts are self-hosted; their OFL licenses are in `public/fonts/`. Motion is enab
 
 ## Interactive experiences
 
-- `/learn/colour-theory`: draggable HSL wheel, three colour relationships, adjustable saturation and lightness, CSS palette export, and a short challenge.
+- `/learn/colour-theory`: draggable HSL wheel, two to four independently editable pickers, complementary/analogous/triadic/square relationships, adjustable saturation and lightness, CSS palette export, and a short challenge.
 - `/learn/image-compression`: local image upload or textured sample, real JPEG/WebP/PNG encodings, PNG baseline comparison, zoom, file sizes, and result download. Prepared previews are limited to 1200 pixels per side.
 - `/playground/css-easing`: draggable cubic Bézier handles, presets, duration controls, explicit motion comparison, time scrubbing, and CSS export.
 

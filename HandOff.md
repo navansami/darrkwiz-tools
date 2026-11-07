@@ -31,7 +31,7 @@ Keep existing tool URLs stable. Learn and Playground now have dedicated index pa
 
 ### Interactive theory
 
-- **Colour theory:** draggable colour wheel; complementary, analogous, and triadic palettes; live harmony previews; connections to the palette extractor.
+- **Colour theory (first lab implemented):** draggable colour wheel with two, three, or four independent pickers, a square harmony, keyboard controls, and CSS palette export; complementary, analogous, and triadic palettes; live harmony previews; connections to the palette extractor.
 - **Typography:** adjust font size, line height, tracking, and type scale to see how hierarchy and readability change.
 - **Image compression:** quality slider, zoomable artifacts, before/after comparison, file-size feedback, and a path into the compressor with your own image.
 

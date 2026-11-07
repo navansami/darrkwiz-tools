@@ -132,3 +132,43 @@ test('experience pages fit narrow screens and navigation reaches the new indexes
   await page.getByRole('link', { name: /Colour theory lab/ }).click();
   await expect(page).toHaveURL(/\/learn\/colour-theory$/);
 });
+
+test('colour lab supports three and four independent pickers with matching exports', async ({
+  page,
+}) => {
+  await page.goto('/learn/colour-theory');
+  await page.getByLabel('Number of pickers').selectOption('3');
+  await expect(page.locator('.wheel-marker')).toHaveCount(3);
+  await expect(page.getByLabel('Colour relationship')).toHaveValue('triadic');
+  await page.getByLabel('Number of pickers').selectOption('4');
+  await expect(page.locator('.wheel-marker')).toHaveCount(4);
+  await expect(page.locator('.lab-swatch')).toHaveCount(4);
+  await expect(page.locator('.lab-swatch small').nth(3)).toContainText('288°');
+  await page.getByLabel('Hue for colour 4', { exact: true }).fill('315');
+  await expect(page.getByLabel('Colour relationship')).toHaveValue('custom');
+  await expect(page.getByLabel('Hue for colour 1', { exact: true })).toHaveValue('18');
+  const marker = page.locator('.wheel-marker').nth(2);
+  await marker.scrollIntoViewIfNeeded();
+  const box = (await marker.boundingBox())!;
+  const wheel = (await page.locator('.colour-wheel').boundingBox())!;
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(wheel.x + wheel.width - 5, wheel.y + wheel.height / 2);
+  await page.mouse.up();
+  await expect(page.getByLabel('Hue for colour 3', { exact: true })).toHaveValue('90');
+  await expect(page.getByLabel('Hue for colour 4', { exact: true })).toHaveValue('315');
+  await marker.focus();
+  await page.keyboard.press('ArrowRight');
+  await expect(page.getByLabel('Hue for colour 3', { exact: true })).toHaveValue('91');
+  await page.context().grantPermissions(['clipboard-read', 'clipboard-write']);
+  await page.getByRole('button', { name: 'Copy palette CSS' }).click();
+  const css = await page.evaluate(() => navigator.clipboard.readText());
+  const fourth = await page.locator('.lab-swatch strong').nth(3).innerText();
+  expect(css).toContain(`--colour-4: ${fourth};`);
+  await page.setViewportSize({ width: 320, height: 800 });
+  expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false);
+  await page.getByRole('button', { name: 'Reset lab' }).click();
+  await expect(page.getByLabel('Number of pickers')).toHaveValue('2');
+  await expect(page.locator('.wheel-marker')).toHaveCount(2);
+  await expect(page.locator('.lab-export pre')).not.toContainText('--colour-3');
+});
