@@ -42,14 +42,14 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </Link>
         <nav className={menu ? 'site-nav open' : 'site-nav'} aria-label="Main navigation">
           <Link href="/#tools" onClick={() => setMenu(false)}>
-            <span className="nav-dot" /> The toolbox <span className="nav-count">06</span>
+            <span className="nav-dot" /> Tools <span className="nav-count">06</span>
           </Link>
-          <Link href="/#about" onClick={() => setMenu(false)}>
-            The idea
+          <Link href="/#learn" onClick={() => setMenu(false)}>
+            Learn
           </Link>
-          <a href="https://navansami.com" target="_blank" rel="noreferrer">
-            Made by Navan <ArrowUpRight size={15} />
-          </a>
+          <Link href="/#playground" onClick={() => setMenu(false)}>
+            Playground
+          </Link>
         </nav>
         <div className="header-actions">
           <button
@@ -81,8 +81,8 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
             </span>
           </Link>
           <p>
-            A little less busywork.
-            <br />A lot more making.
+            Tools. Learn. Playground.
+            <br />Make something. Understand more. Stay curious.
           </p>
           <a href="https://navansami.com" target="_blank" rel="noreferrer">
             A side of Navan Sami <ArrowUpRight size={17} />

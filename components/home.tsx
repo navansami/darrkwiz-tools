@@ -170,17 +170,16 @@ export function Home() {
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-copy">
           <div className="eyebrow">
-            <span className="status-dot" /> THE INTERNET’S HANDY LITTLE CORNER
+            <span className="status-dot" /> TOOLS · LEARN · PLAYGROUND
           </div>
           <h1>
-            <span>SMALL TOOLS.</span>
-            <span>
-              BIG <em>possibilities.</em>
-            </span>
+            <span>TOOLS.</span>
+            <span>LEARN.</span>
+            <span><em>Playground.</em></span>
           </h1>
           <p>
-            For the little things between you and your next big thing.
-            <br className="desktop-break" /> A collection of useful tools. A healthy dose of play.
+            Make something. Understand how it works. Try something new.
+            <br className="desktop-break" /> Free tools today. Interactive learning and creative experiments next.
           </p>
           <div className="hero-cta">
             <a href="#tools" className="button primary">
@@ -289,7 +288,7 @@ export function Home() {
       <section id="tools" className="tools-section wrap">
         <div className="section-top">
           <div>
-            <span className="eyebrow">01 / THE TOOLBOX</span>
+            <span className="eyebrow">01 / TOOLS</span>
             <h2>
               Little helpers.
               <br />
@@ -384,6 +383,37 @@ export function Home() {
           <Sparkles size={18} />
         </div>
       </section>
+      <section className="explore-section wrap" aria-label="Learn and Playground roadmap">
+        <div className="explore-intro">
+          <span className="eyebrow">MORE WAYS TO STAY CURIOUS</span>
+          <h2>Make. Understand. <em>Experiment.</em></h2>
+          <p>The tools are ready to use. Here’s where Darrkwiz is heading next.</p>
+        </div>
+        <div className="explore-grid">
+          <article id="learn" className="explore-card">
+            <span className="eyebrow">02 / LEARN · PLANNED</span>
+            <h3>The theory, made tangible.</h3>
+            <p>Explore colour, typography, image compression, and how the web works through short explanations and hands-on experiments.</p>
+            <ul>
+              <li>Colour theory with a draggable colour wheel</li>
+              <li>Image compression you can inspect and compare</li>
+              <li>Visual guides to browsers, HTTP, and JavaScript</li>
+            </ul>
+            <p className="explore-note">Explain it. Try it. Take a small challenge. Put it to use.</p>
+          </article>
+          <article id="playground" className="explore-card">
+            <span className="eyebrow">03 / PLAYGROUND · PLANNED</span>
+            <h3>Follow your curiosity.</h3>
+            <p>A space to play with design and code, see what changes, and take something useful away.</p>
+            <ul>
+              <li>CSS easing curves with live motion previews</li>
+              <li>Gradient, pattern, and layout experiments</li>
+              <li>Creative challenges and copyable CSS</li>
+            </ul>
+            <p className="explore-note">Change a setting. See what happens. Make it your own.</p>
+          </article>
+        </div>
+      </section>
       <section className="about-section" id="about">
         <div className="wrap about-inner">
           <div className="about-art" aria-hidden="true">
@@ -396,19 +426,19 @@ export function Home() {
             <span className="about-scribble">useful feels good.</span>
           </div>
           <div className="about-copy">
-            <span className="eyebrow">02 / THE IDEA</span>
+            <span className="eyebrow">THE IDEA</span>
             <h2>
               The little things
               <br />
               <em>add up.</em>
             </h2>
             <p>
-              Another image to resize. A screenshot to dress up. That text that just won’t behave.
-              Small jobs shouldn’t get in the way of big ideas.
+              A useful tool can get you started. Understanding why it works can take you further.
+              And a little experimentation can lead somewhere unexpected.
             </p>
             <p>
-              Darrkwiz is my little corner of the internet for making those jobs easier. Thoughtful
-              tools, a bit of personality, and nothing between you and getting things done.
+              Darrkwiz is growing around three ideas: Tools to help you make, Learn to help you
+              understand, and Playground to give your curiosity room to roam.
             </p>
             <a className="text-link" href="https://navansami.com" target="_blank" rel="noreferrer">
               Built by Navan. Fuelled by curiosity. <MoveUpRight size={18} />

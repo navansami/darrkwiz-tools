@@ -21,13 +21,14 @@ const display = localFont({
 });
 export const metadata: Metadata = {
   metadataBase: new URL('https://darrkwiz.com'),
-  title: { default: 'Darrkwiz — Small tools. Big possibilities.', template: '%s · Darrkwiz' },
+  title: { default: 'Darrkwiz — Tools, Learn & Playground', template: '%s · Darrkwiz' },
   description:
-    'Six handy tools for people who make things. Style screenshots, compress and convert images, clean and compare text, and discover colour palettes. Free. Private. Right in your browser.',
+    'Tools, Learn, Playground: a home for making, understanding, and experimenting. Try six free browser tools, with interactive theory and creative playgrounds coming next.',
   openGraph: {
-    title: 'Darrkwiz — Small tools. Big possibilities.',
-    description: 'A little less busywork. A lot more making.',
+    title: 'Darrkwiz — Tools, Learn & Playground',
+    description: 'Make with free browser tools. Explore the roadmap for interactive lessons and creative playgrounds.',
     type: 'website',
+    url: 'https://darrkwiz.com',
     siteName: 'Darrkwiz',
   },
 };

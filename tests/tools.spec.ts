@@ -7,7 +7,7 @@ async function bytes(download: Download) {
 
 test('toolbox filters, search, navigation, and motion preference work', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('SMALL TOOLS.');
+  await expect(page.getByRole('heading', { level: 1 })).toContainText('TOOLS.');
   await expect(page.locator('.tool-card')).toHaveCount(6);
   await page.getByRole('button', { name: 'Text', exact: true }).click();
   await expect(page.locator('.tool-card')).toHaveCount(2);
@@ -225,7 +225,7 @@ test('all six workspaces and the home page fit a 320px mobile screen', async ({ 
   await page.goto('/');
   await page.getByRole('button', { name: 'Open menu', exact: true }).click();
   await expect(page.getByRole('navigation')).toBeVisible();
-  await page.getByRole('link', { name: 'The idea', exact: true }).click();
+  await page.getByRole('link', { name: 'Learn', exact: true }).click();
   await expect(page.getByRole('button', { name: 'Open menu', exact: true })).toBeVisible();
   await page.setViewportSize({ width: 390, height: 844 });
   await page.getByRole('button', { name: 'Pause animations' }).click();

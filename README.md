@@ -1,6 +1,8 @@
 # Darrkwiz
 
-A Next.js App Router toolbox styled from `STYLE_GUIDE.md`: screenshot studio, batch image compressor, batch image converter, text cleaner, text comparison, and palette extractor.
+A Next.js App Router site organized around **Tools · Learn · Playground**, styled from `STYLE_GUIDE.md`. Six browser tools are available today: screenshot studio, batch image compressor, batch image converter, text cleaner, text comparison, and palette extractor. Interactive learning and creative playgrounds are planned.
+
+See [HandOff.md](HandOff.md) for the complete feature roadmap, content architecture, first-release priorities, and SEO direction.
 
 ## Run locally
 
